@@ -62,7 +62,19 @@ class GoppaCode:
         self.supp = support
 
     def patterson_alg(self, received_message: np.ndarray) -> np.ndarray:
-        """Patterson Algorithm to find and fix the errors. Mainly following the desription in [this](https://cr.yp.to/codes/goppalist-20081107.pdf) paper."""
+        """
+        Patterson algorithm for error correction in Goppa codes.
+        Args:
+        syndrome (Polynomial): The syndrome polynomial.
+        goppa_poly (Polynomial): The Goppa polynomial.
+        field (Field): The finite field over which the operations are performed.
+
+        Returns:
+            Polynomial: The error locator polynomial.
+
+        Raises:
+            ValueError: If the syndrome is zero or inversion fails.
+        """
 
         # generate the syndrome vector
         inverse_polys = [
